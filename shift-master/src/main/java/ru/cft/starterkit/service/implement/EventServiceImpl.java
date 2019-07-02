@@ -48,6 +48,11 @@ public class EventServiceImpl implements EventService {
         return eventRepository.cancel(id);
     }
 
+    @Override
+    public Collection<Event> getComingsoon() {
+        return eventRepository.getComingsoon();
+    }
+
 
 }
 

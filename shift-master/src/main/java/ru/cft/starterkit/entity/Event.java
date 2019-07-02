@@ -2,10 +2,11 @@ package ru.cft.starterkit.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-
-import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
+
+import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -101,6 +102,15 @@ public class Event {
                 Objects.equals(baz, entity.baz);
     }
 
+    public boolean checkIfSoon()
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy HH:MM:SS", Locale.ENGLISH);
+
+        String dateInString = "7-03-2013 12:00:00";
+       // Date date = formatter.parse(dateInString);
+        //if date.compareTo();
+        return true;
+    }
     @Override
     public int hashCode() {
         return Objects.hash(id, /*type,*/email, name,lastname, starts,ends,canceled, baz);

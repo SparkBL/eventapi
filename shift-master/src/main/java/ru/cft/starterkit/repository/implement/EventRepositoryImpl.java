@@ -9,6 +9,7 @@ import ru.cft.starterkit.repository.EventRepository;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -30,8 +31,19 @@ public class EventRepositoryImpl implements EventRepository {
         return newEvent;
     }
 
+    private final Map<Long, Event> soonStorage = new ConcurrentHashMap<>();
 
     private final Map<Long, Event> storage = new ConcurrentHashMap<>();
+
+    @Override
+    public Collection<Event> getComingsoon() {
+        for(int i = 0;i<storage.size();i++)
+        {
+            Event event = storage.get(i);
+            if(event.checkIfSoon()){soonStorage.put(event.getId(),event);}
+        }
+return soonStorage.values();
+    }
 
     @Override
     public Event add(Event event) {

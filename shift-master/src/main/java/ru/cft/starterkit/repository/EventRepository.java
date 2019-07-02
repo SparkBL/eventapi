@@ -7,6 +7,8 @@ import java.util.Collection;
 
 public interface EventRepository {
 
+     Collection<Event> getComingsoon();
+
     Event add(Event entity);
 
     Event get(Long id) throws ObjectNotFoundException;

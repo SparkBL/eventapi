@@ -50,4 +50,8 @@ public class SampleEntityController {
     public Event Cancel(@PathVariable(name = "id") Long id)throws ObjectNotFoundException {
         return eventService.cancel(id);}
 
+
+     @GetMapping ( path = "/events/comingsoon", produces = "applictation/json")
+    public Collection<Event> getComingsoon(){return  eventService.getComingsoon();}
+
 }

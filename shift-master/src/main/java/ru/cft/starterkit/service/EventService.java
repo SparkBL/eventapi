@@ -16,4 +16,6 @@ public interface EventService {
     Event add(Event event);
 
     Event cancel(Long id);
+
+    Collection<Event> getComingsoon();
 }
