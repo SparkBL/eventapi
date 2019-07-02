@@ -104,11 +104,13 @@ public class Event {
 
     public boolean checkIfSoon()
     {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy HH:MM:SS", Locale.ENGLISH);
+      if(this.getCanceled()) return false;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy HH:MM:SS");
 
         String dateInString = "7-03-2013 12:00:00";
        // Date date = formatter.parse(dateInString);
         //if date.compareTo();
+        if (this.canceled ==true) return false;
         return true;
     }
     @Override
