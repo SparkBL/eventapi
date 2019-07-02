@@ -43,6 +43,11 @@ public class EventServiceImpl implements EventService {
     return eventRepository.add(event);
     }
 
+    @Override
+    public Event cancel(Long id) {
+        return eventRepository.cancel(id);
+    }
+
 
 }
 

@@ -12,4 +12,6 @@ public interface EventRepository {
     Event get(Long id) throws ObjectNotFoundException;
 
     Collection<Event>getAll() throws ObjectNotFoundException;
+
+    Event cancel(Long id);
 }

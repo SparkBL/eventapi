@@ -44,8 +44,10 @@ public class SampleEntityController {
     }
     @GetMapping ( path = "/events/all",produces = "application/json")
     public Collection <Event> getAll() throws ObjectNotFoundException {return eventService.getAll();}
+
+
     @PatchMapping ( path = "/events/removal/{id}")
-    public String Cancel(@PathVariable(name = "id") Long id)throws ObjectNotFoundException {
-        eventService.get(id);return "Delete here";}
+    public Event Cancel(@PathVariable(name = "id") Long id)throws ObjectNotFoundException {
+        return eventService.cancel(id);}
 
 }

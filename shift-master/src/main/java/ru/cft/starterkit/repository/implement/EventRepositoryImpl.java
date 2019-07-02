@@ -22,6 +22,14 @@ public class EventRepositoryImpl implements EventRepository {
     @Override
    public final Collection<Event> getAll() {return storage.values();}
 
+    @Override
+    public Event cancel(Long id) {
+        Event newEvent = storage.get(id);
+        newEvent.Cancel();
+       storage.replace(id,newEvent);
+        return newEvent;
+    }
+
 
     private final Map<Long, Event> storage = new ConcurrentHashMap<>();
 

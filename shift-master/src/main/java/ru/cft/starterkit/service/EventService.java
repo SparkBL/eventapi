@@ -14,4 +14,6 @@ public interface EventService {
     Collection<Event> getAll() throws  ObjectNotFoundException;
 
     Event add(Event event);
+
+    Event cancel(Long id);
 }
