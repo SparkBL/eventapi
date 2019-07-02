@@ -1,6 +1,7 @@
-POST http://localhost:8080/sample
+POST http://localhost:8080/events/regEvent
 Content-Type: application/json
 Accept: */*
+
 
 [
 {
@@ -11,26 +12,26 @@ Accept: */*
   "ends":"04-07-2019 15:00:00"
 },
 {
-  "email": "test1@mail.com",
-  "name": "Иван",
-  "lastname": "Иванов",
-  "starts": "04-07-2019 17:00:00",
-  "ends":"04-07-2019 21:30:00"
+"email": "test1@mail.com",
+"name": "Иван",
+"lastname": "Иванов",
+"starts": "04-07-2019 17:00:00",
+"ends":"04-07-2019 21:30:00"
 },
-  {
-  "email": "test2@mail.com",
-  "name": "Алексей",
-  "lastname": "Алексеев",
-  "starts": "5-07-2019 16:00:00",
-  "ends":"5-07-2019 21:30:00"
+{
+"email": "test2@mail.com",
+"name": "Алексей",
+"lastname": "Алексеев",
+"starts": "5-07-2019 16:00:00",
+"ends":"5-07-2019 21:30:00"
 },
-  {
-    "email": "test3@mail.com",
-    "name": "Людмила",
-    "lastname": "Дюмилова",
-    "starts": "7-07-2019 13:00:00",
-    "ends":"7-07-2019 17:30:00"
-  }
+{
+"email": "test3@mail.com",
+"name": "Людмила",
+"lastname": "Дюмилова",
+"starts": "7-07-2019 13:00:00",
+"ends":"7-07-2019 17:30:00"
+}
 ]
 <> 2019-07-02T081731.200.json
 
