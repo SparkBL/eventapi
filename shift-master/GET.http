@@ -1,4 +1,4 @@
-GET http://localhost:8080/sample/all
+GET http://localhost:8080/events/all
 Content-Type: application/json
 Accept: */*
 
