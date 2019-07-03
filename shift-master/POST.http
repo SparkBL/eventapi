@@ -4,11 +4,11 @@ Accept: */*
 
 
 {
-  "type": "Funeral",
+  "type": "Rock Concert",
   "email": "34frae@mail.com",
-  "name": "Галина",
-  "lastname": "Сергеева",
-  "starts": "08-07 12",
+  "name": "Антон",
+  "lastname": "Антонов",
+  "starts": "08-07 16",
   "ends":"08-07 18"
 }
 

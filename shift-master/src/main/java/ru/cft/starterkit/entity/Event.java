@@ -94,7 +94,7 @@ public class Event {
         Date date = new SimpleDateFormat(pattern).parse(this.starts);
  Date now = new SimpleDateFormat(pattern).parse("03-07 12");
         Date now1 = new SimpleDateFormat(pattern).parse("06-07 12");
-  if (date.after(now)&&date.before(now1)) {return false;} else{ return true;}
+  if (date.after(now)&&date.before(now1)) {return true;} else{ return false;}
     }
 
     @Override

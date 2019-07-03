@@ -51,7 +51,7 @@ public class SampleEntityController {
         return eventService.cancel(id);}
 
 
-     @GetMapping ( path = "/events/comingsoon", produces = "applictation/json")
+     @GetMapping ( path = "/events/comingsoon", produces = "application/json")
     public Collection<Event> getComingsoon(){return  eventService.getComingsoon();}
 
 }
