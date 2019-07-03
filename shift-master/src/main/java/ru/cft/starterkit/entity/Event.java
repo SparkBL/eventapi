@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import java.util.Locale;
@@ -90,11 +91,13 @@ public class Event {
     public boolean checkIfSoon() throws ParseException {
 
       if(this.getCanceled()) return false;
-        String pattern = "dd-MM HH";
+        String pattern = "dd-MM-yyyy HH";
         Date date = new SimpleDateFormat(pattern).parse(this.starts);
- Date now = new SimpleDateFormat(pattern).parse("03-07 12");
-        Date now1 = new SimpleDateFormat(pattern).parse("06-07 12");
-  if (date.after(now)&&date.before(now1)) {return true;} else{ return false;}
+
+        long millis3Day = 3 * 24 * 60 * 60 * 1000;
+        Date startDateTime = new Date();
+        Date endDateTime = new Date(System.currentTimeMillis() + millis3Day);
+        if (date.after(startDateTime)&&date.before(endDateTime)) {return true;} else{ return false;}
     }
 
     @Override

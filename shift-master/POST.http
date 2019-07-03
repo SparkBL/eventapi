@@ -4,12 +4,12 @@ Accept: */*
 
 
 {
-  "type": "Rock Concert",
+  "type": "Test Demo",
   "email": "34frae@mail.com",
-  "name": "Антон",
-  "lastname": "Антонов",
-  "starts": "08-07 16",
-  "ends":"08-07 18"
+  "name": "SSS",
+  "lastname": "DDDDDD",
+  "starts": "08-07-2019 16",
+  "ends":"08-07-2019 18"
 }
 
 <> 2019-07-02T081731.200.json
