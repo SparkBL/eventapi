@@ -1,14 +1,16 @@
 package ru.cft.starterkit.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import org.joda.time.DateTime;
+import org.joda.time.Interval;
+import org.joda.time.Period;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
+
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Date;
 
-import java.util.Locale;
+
 import java.util.Objects;
 import java.util.UUID;
 
@@ -91,13 +93,12 @@ public class Event {
     public boolean checkIfSoon() throws ParseException {
 
       if(this.getCanceled()) return false;
-        String pattern = "dd-MM-yyyy HH";
-        Date date = new SimpleDateFormat(pattern).parse(this.starts);
-
-        long millis3Day = 3 * 24 * 60 * 60 * 1000;
-        Date startDateTime = new Date();
-        Date endDateTime = new Date(System.currentTimeMillis() + millis3Day);
-        if (date.after(startDateTime)&&date.before(endDateTime)) {return true;} else{ return false;}
+        DateTimeFormatter pattern =  DateTimeFormat.forPattern("dd-MM-yyyy HH");
+       // Date date = new SimpleDateFormat(pattern).parse(this.starts);
+       DateTime date = DateTime.parse(this.starts,pattern);
+       DateTime startDate = DateTime.now();
+       DateTime endDate = startDate.plusDays(7);
+        if (date.isAfter(startDate)&&date.isBefore(endDate)) {return true;} else{ return false;}
     }
 
     @Override
