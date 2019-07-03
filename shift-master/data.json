@@ -1,5 +1,6 @@
 [
   {
+    "id" : 1,
     "type": "party",
     "email": "test@mail.com",
     "name": "Сергей",
@@ -7,7 +8,9 @@
     "starts": "04-07-2019 12:00:00",
     "ends":"04-07-2019 15:00:00"
   },
-  { "type": "party",
+  {
+    "id" : 2,
+    "type": "party",
     "email": "test1@mail.com",
     "name": "Иван",
     "lastname": "Иванов",
@@ -15,7 +18,8 @@
     "ends":"04-07-2019 21:30:00"
   },
 
-  { "type": "wedding",
+  {  "id" : 3,
+    "type": "wedding",
     "email": "test2@mail.com",
     "name": "Алексей",
     "lastname": "Алексеев",
@@ -23,7 +27,8 @@
     "ends":"5-07-2019 21:30:00"
   },
 
-  { "type": "wedding",
+  {  "id" : 4,
+    "type": "wedding",
     "email": "test3@mail.com",
     "name": "Людмила",
     "lastname": "Дюмилова",

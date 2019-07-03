@@ -88,6 +88,7 @@ public class Event {
     }
 
     public boolean checkIfSoon() throws ParseException {
+
       if(this.getCanceled()) return false;
         String pattern = "dd-MM HH";
         Date date = new SimpleDateFormat(pattern).parse(this.starts);

@@ -1,12 +1,18 @@
 package ru.cft.starterkit.repository.implement;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import ru.cft.starterkit.entity.Event;
 import ru.cft.starterkit.exception.ObjectNotFoundException;
 import ru.cft.starterkit.repository.EventRepository;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.Collection;
 import java.util.Map;
@@ -17,9 +23,19 @@ import java.util.concurrent.atomic.AtomicLong;
 @Repository
 public class EventRepositoryImpl implements EventRepository {
 
+    private static final File STORAGE_FILE = new File("C:\\data.json");
+
     private static final Logger log = LoggerFactory.getLogger(EventRepositoryImpl.class);
 
     private final AtomicLong idCounter = new AtomicLong();
+
+    private final ObjectMapper objectMapper;
+
+    @Autowired
+    public EventRepositoryImpl(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
+
 
     @Override
    public final Collection<Event> getAll() {return storage.values();}
@@ -38,10 +54,8 @@ public class EventRepositoryImpl implements EventRepository {
 
     @Override
     public Collection<Event> getComingsoon() throws ParseException {
-        for(int i = 0;i<storage.size();i++)
-        {
-            Event event = storage.get(i);
-            if(event.checkIfSoon()){soonStorage.put(event.getId(),event);}
+        for (Event event : storage.values()) {
+            if(event.checkIfSoon()&&event!=null){soonStorage.put(event.getId(),event);}
         }
 return soonStorage.values();
     }
@@ -67,5 +81,30 @@ return soonStorage.values();
         log.info("Returned event with id '{}' from storage: {}", id, event);
         return event;
     }
+    @PostConstruct
+    private void initStorage() {
+        try {
+            Event[] entriesFromFile = objectMapper.readValue(STORAGE_FILE, Event[].class);
+            for (Event event : entriesFromFile) {
+                storage.put(event.getId(), event);
+                if (idCounter.get() < event.getId()) {
+                    idCounter.set(event.getId());
+                }
+            }
+            log.info("Loaded {} entities to storage. Id counter set to {}.", storage.size(), idCounter.get());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    @PreDestroy
+    private void shutdown() {
+        log.info("Start shutdown!");
+        try {
+            objectMapper.writeValue(STORAGE_FILE, storage.values());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        log.info("Shutdown is ready!");
+    }
 }
