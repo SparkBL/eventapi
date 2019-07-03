@@ -2,8 +2,12 @@ package ru.cft.starterkit.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import java.util.Locale;
@@ -13,7 +17,7 @@ import java.util.UUID;
 public class Event {
 
     private Long id;
-    //private String  type;
+    private String  type;
     private String  email;
     private String name;
     private String lastname;
@@ -23,12 +27,12 @@ public class Event {
     @JsonIgnore
     private UUID baz;
 
-    public Event() {
+    public Event(String email, String name, String lastname, String starts, String ends, UUID uuid) {
 
     }
 
-    public Event(/*String type, */String email, String name, String lastname, String starts, String ends, UUID baz) {
-      //  this.type = type;
+    public Event(String type, String email, String name, String lastname, String starts, String ends, UUID baz) {
+        this.type = type;
         this.email = email;
         this.name = name;
         this.lastname = lastname;
@@ -39,49 +43,33 @@ public class Event {
     }
 
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public void setId(Long id) {this.id = id; }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-   /* public String getType() {
-        return this.type;
-    }*/
-
-   /* public void setType(String type) {
-        this.type = type;
-    }*/
-
+    public String getType() { return this.type; }
+    public void setType(String type) { this.type = type; }
 
     public void setName(String name) {this.name = name;}
-
     public String getName(){return  this.name;}
 
     public  void setEmail(String email) {this.email = email;}
-
     public  String getEmail(){return this.email;}
 
     public void setLastname(String lastname) {this.lastname = lastname;}
-
     public  String getLastname(){return  this.lastname;}
 
     public void setStarts( String starts) {this.starts = starts;}
-
     public  String getStarts () {return  this.starts;}
 
     public  void setEnds (String ends) {this.ends = ends;}
+    public String getEnds(){return  this.ends;}
 
     public  boolean getCanceled () {return  this.canceled;}
-
     public  void Cancel () {this.canceled = true;}
 
     public UUID getBaz() {
         return baz;
     }
-
     public void setBaz(UUID baz) {
         this.baz = baz;
     }
@@ -92,7 +80,7 @@ public class Event {
         if (!(o instanceof Event)) return false;
         Event entity = (Event) o;
         return Objects.equals(id, entity.id) &&
-             //  Objects.equals(type, entity.type) &&
+             Objects.equals(type, entity.type) &&
                Objects.equals(email, entity.email) &&
                 Objects.equals(name, entity.name) &&
                 Objects.equals(lastname, entity.lastname) &&
@@ -102,17 +90,14 @@ public class Event {
                 Objects.equals(baz, entity.baz);
     }
 
-    public boolean checkIfSoon()
-    {
+    public boolean checkIfSoon() throws ParseException {
       if(this.getCanceled()) return false;
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy HH:MM:SS");
-
-        String dateInString = "7-03-2013 12:00:00";
-       // Date date = formatter.parse(dateInString);
-        //if date.compareTo();
-        if (this.canceled ==true) return false;
-        return true;
+        String pattern = "dd-MM HH";
+        Date date = new SimpleDateFormat(pattern).parse(this.starts);
+ Date now = new SimpleDateFormat(pattern).parse("03-07 12");
+  if (date.after(now)) {return false;} else{ return true;}
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(id, /*type,*/email, name,lastname, starts,ends,canceled, baz);
@@ -122,7 +107,7 @@ public class Event {
     public String toString() {
         return "Event{" +
                "id=" + id +
-               //", type='" + type  +
+               ", type='" + type  +
                ", email=" + email +
                 ", name=" + name +
                 ", lastname=" + lastname +
@@ -134,27 +119,4 @@ public class Event {
     }
 
 }
-  /*  import java.text.ParseException;
-        import java.text.SimpleDateFormat;
-        import java.util.Date;
 
-public class TestDateExample4 {
-
-    public static void main(String[] argv) {
-
-        SimpleDateFormat formatter = new SimpleDateFormat("EEEE, MMM dd, yyyy HH:mm:ss a");
-        String dateInString = "Friday, Jun 7, 2013 12:10:56 PM";
-
-        try {
-
-            Date date = formatter.parse(dateInString);
-            System.out.println(date);
-            System.out.println(formatter.format(date));
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-}*/

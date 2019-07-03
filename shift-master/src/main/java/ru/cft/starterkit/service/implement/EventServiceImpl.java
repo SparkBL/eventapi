@@ -7,6 +7,7 @@ import ru.cft.starterkit.exception.ObjectNotFoundException;
 import ru.cft.starterkit.repository.EventRepository;
 import ru.cft.starterkit.service.EventService;
 
+import java.text.ParseException;
 import java.util.Collection;
 import java.util.UUID;
 
@@ -50,7 +51,12 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Collection<Event> getComingsoon() {
-        return eventRepository.getComingsoon();
+        try {
+            return eventRepository.getComingsoon();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 

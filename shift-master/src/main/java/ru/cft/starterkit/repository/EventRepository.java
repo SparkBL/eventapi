@@ -3,11 +3,12 @@ package ru.cft.starterkit.repository;
 import ru.cft.starterkit.entity.Event;
 import ru.cft.starterkit.exception.ObjectNotFoundException;
 
+import java.text.ParseException;
 import java.util.Collection;
 
 public interface EventRepository {
 
-     Collection<Event> getComingsoon();
+     Collection<Event> getComingsoon() throws ParseException;
 
     Event add(Event entity);
 

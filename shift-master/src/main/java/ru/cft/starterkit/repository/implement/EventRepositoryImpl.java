@@ -7,6 +7,7 @@ import ru.cft.starterkit.entity.Event;
 import ru.cft.starterkit.exception.ObjectNotFoundException;
 import ru.cft.starterkit.repository.EventRepository;
 
+import java.text.ParseException;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -36,7 +37,7 @@ public class EventRepositoryImpl implements EventRepository {
     private final Map<Long, Event> storage = new ConcurrentHashMap<>();
 
     @Override
-    public Collection<Event> getComingsoon() {
+    public Collection<Event> getComingsoon() throws ParseException {
         for(int i = 0;i<storage.size();i++)
         {
             Event event = storage.get(i);
