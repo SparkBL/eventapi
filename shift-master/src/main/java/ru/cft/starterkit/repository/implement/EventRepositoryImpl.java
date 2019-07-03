@@ -66,10 +66,6 @@ public class EventRepositoryImpl implements EventRepository {
 
 
 
-
-
-
-
     @Override
     public Event add(Event event) {
         event.setId(idCounter.incrementAndGet());

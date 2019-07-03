@@ -7,7 +7,6 @@ import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
 
-
 import java.text.ParseException;
 
 
@@ -64,13 +63,18 @@ public class Event implements Comparable<Event> {
     public  String getPhone () {return  this.phone;}
 
     public void setStarts( String starts) {this.starts = starts;}
-    public  DateTime getStarts () {
+    public  String getStarts () { return this.starts;}
+
+    private  DateTime getTimeStarts () {
         DateTimeFormatter pattern =  DateTimeFormat.forPattern("dd-MM-yyyy HH");
         DateTime date = DateTime.parse(this.starts,pattern);
         return  date;}
 
     public  void setEnds (String ends) {this.ends = ends;}
-    public  DateTime getEnds () {
+    public  String getEnds () {
+        return  this.ends;}
+
+    private  DateTime getTimeEnds () {
         DateTimeFormatter pattern =  DateTimeFormat.forPattern("dd-MM-yyyy HH");
         DateTime date = DateTime.parse(this.ends,pattern);
         return  date;}
@@ -137,8 +141,9 @@ public class Event implements Comparable<Event> {
 
     @Override
     public int compareTo(Event o) {
-        if(this.getStarts().isAfter(o.getStarts())) {return 1;}
+        if(this.getTimeStarts().isAfter(o.getTimeStarts())) {return 1;}
         else {return -1;}
     }
+
 }
 
