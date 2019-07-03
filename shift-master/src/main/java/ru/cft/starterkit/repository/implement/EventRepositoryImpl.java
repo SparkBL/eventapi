@@ -15,9 +15,7 @@ import javax.annotation.PreDestroy;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 @CrossOrigin
@@ -49,17 +47,28 @@ public class EventRepositoryImpl implements EventRepository {
         return newEvent;
     }
 
-    private final Map<Long, Event> soonStorage = new ConcurrentHashMap<>();
+   // private final Map<Long, Event> soonStorage = new ConcurrentHashMap<>();
 
     private final Map<Long, Event> storage = new ConcurrentHashMap<>();
 
     @Override
-    public Collection<Event> getComingsoon() throws ParseException {
+    public Collection<Event>  getComingsoon() throws ParseException {
+        ArrayList<Event> Sorted = new ArrayList<>();
         for (Event event : storage.values()) {
-            if(event.checkIfSoon()&&event!=null){soonStorage.put(event.getId(),event);}
-        }
-return soonStorage.values();
-    }
+            if(event.checkIfSoon()&&event!=null)//{soonStorage.put(event.getId(),event);}
+            {Sorted.add(event);}
+            }
+        Collections.sort(Sorted);
+
+        return Sorted;
+            }
+
+
+
+
+
+
+
 
     @Override
     public Event add(Event event) {

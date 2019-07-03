@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public interface EventService {
 
-    Event add(String type, String email, String name, String lastname, String starts, String ends);
+    Event add(String type, String email, String name, String lastname,String phone, String starts, String ends);
 
     Event get(Long id) throws ObjectNotFoundException;
 

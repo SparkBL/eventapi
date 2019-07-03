@@ -22,8 +22,8 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event add(String type,String email, String name, String lastname, String starts, String ends) {
-        return eventRepository.add(new Event(type, email, name, lastname, starts, ends, UUID.randomUUID()));
+    public Event add(String type,String email, String name, String lastname, String phone, String starts, String ends) {
+        return eventRepository.add(new Event(type, email, name, lastname, phone, starts, ends, UUID.randomUUID()));
     }
 
     @Override

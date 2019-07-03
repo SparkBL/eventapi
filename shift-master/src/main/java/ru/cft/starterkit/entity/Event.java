@@ -2,10 +2,10 @@ package ru.cft.starterkit.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.joda.time.DateTime;
-import org.joda.time.Interval;
-import org.joda.time.Period;
+
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+
 
 
 import java.text.ParseException;
@@ -14,13 +14,14 @@ import java.text.ParseException;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Event {
+public class Event implements Comparable<Event> {
 
     private Long id;
     private String  type;
     private String  email;
     private String name;
     private String lastname;
+    private String phone;
     private String starts;
     private String ends;
     private boolean canceled;
@@ -28,18 +29,19 @@ public class Event {
     private UUID baz;
 
 
-    public Event(String type, String email, String name, String lastname, String starts, String ends, UUID baz) {
+    public Event(String type, String email, String name, String lastname,String phone, String starts, String ends, UUID baz) {
         this.type = type;
         this.email = email;
         this.name = name;
         this.lastname = lastname;
+        this.phone = phone;
         this.starts = starts;
         this.ends = ends;
         this.canceled = false;
         this.baz = baz;
     }
 
-    public Event() {
+    public Event()  {
     }
 
 
@@ -58,11 +60,20 @@ public class Event {
     public void setLastname(String lastname) {this.lastname = lastname;}
     public  String getLastname(){return  this.lastname;}
 
+    public void setPhone( String phone) {this.phone = phone;}
+    public  String getPhone () {return  this.phone;}
+
     public void setStarts( String starts) {this.starts = starts;}
-    public  String getStarts () {return  this.starts;}
+    public  DateTime getStarts () {
+        DateTimeFormatter pattern =  DateTimeFormat.forPattern("dd-MM-yyyy HH");
+        DateTime date = DateTime.parse(this.starts,pattern);
+        return  date;}
 
     public  void setEnds (String ends) {this.ends = ends;}
-    public String getEnds(){return  this.ends;}
+    public  DateTime getEnds () {
+        DateTimeFormatter pattern =  DateTimeFormat.forPattern("dd-MM-yyyy HH");
+        DateTime date = DateTime.parse(this.ends,pattern);
+        return  date;}
 
     public  boolean getCanceled () {return  this.canceled;}
     public  void Cancel () {this.canceled = true;}
@@ -73,6 +84,7 @@ public class Event {
     public void setBaz(UUID baz) {
         this.baz = baz;
     }
+
 
     @Override
     public boolean equals(Object o) {
@@ -106,6 +118,7 @@ public class Event {
         return Objects.hash(id, /*type,*/email, name,lastname, starts,ends,canceled, baz);
     }
 
+
     @Override
     public String toString() {
         return "Event{" +
@@ -121,5 +134,11 @@ public class Event {
                '}';
     }
 
+
+    @Override
+    public int compareTo(Event o) {
+        if(this.getStarts().isAfter(o.getStarts())) {return 1;}
+        else {return -1;}
+    }
 }
 
