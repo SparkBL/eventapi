@@ -3,11 +3,8 @@ package ru.cft.starterkit.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 import java.util.Locale;
@@ -27,9 +24,6 @@ public class Event {
     @JsonIgnore
     private UUID baz;
 
-    public Event(String email, String name, String lastname, String starts, String ends, UUID uuid) {
-
-    }
 
     public Event(String type, String email, String name, String lastname, String starts, String ends, UUID baz) {
         this.type = type;
@@ -40,6 +34,9 @@ public class Event {
         this.ends = ends;
         this.canceled = false;
         this.baz = baz;
+    }
+
+    public Event() {
     }
 
 

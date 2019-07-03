@@ -4,6 +4,7 @@ Accept: */*
 
 
 {
+  "type": "party",
   "email": "test@mail.com",
   "name": "Сергей",
   "lastname": "Сергеев",
