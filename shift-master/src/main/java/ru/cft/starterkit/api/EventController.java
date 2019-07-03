@@ -54,4 +54,9 @@ public class EventController {
      @GetMapping ( path = "/events/comingsoon", produces = "application/json")
     public Collection<Event> getComingsoon(){return  eventService.getComingsoon();}
 
+    @GetMapping (path = "events/date/{starts:[\\S\\s]+}", produces = "application/json")
+    public  Collection<Event> getDay(@PathVariable String starts) throws  ObjectNotFoundException{
+        return  eventService.getDay(starts);
+    }
+
 }

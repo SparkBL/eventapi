@@ -110,7 +110,6 @@ public class Event implements Comparable<Event> {
 
       if(this.getCanceled()) return false;
         DateTimeFormatter pattern =  DateTimeFormat.forPattern("dd-MM-yyyy HH");
-       // Date date = new SimpleDateFormat(pattern).parse(this.starts);
        DateTime date = DateTime.parse(this.starts,pattern);
        DateTime startDate = DateTime.now();
        DateTime endDate = startDate.plusDays(7);
@@ -145,5 +144,14 @@ public class Event implements Comparable<Event> {
         else {return -1;}
     }
 
+    public boolean checkDay(String starts){
+        if(this.getCanceled()) return false;
+        DateTimeFormatter pattern =  DateTimeFormat.forPattern("dd-MM-yyyy");
+        String noTimeStart = this.starts.substring(0,10);
+        DateTime day = DateTime.parse(starts,pattern);
+        DateTime event = DateTime.parse(noTimeStart,pattern);
+        if (day.compareTo(event)==0) {return true;} else{ return false;}
+
+    }
 }
 

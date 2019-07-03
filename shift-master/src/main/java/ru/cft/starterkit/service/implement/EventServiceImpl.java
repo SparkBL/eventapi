@@ -59,6 +59,16 @@ public class EventServiceImpl implements EventService {
         return null;
     }
 
+    @Override
+    public Collection<Event> getDay(String starts) {
+        try {
+            return eventRepository.getDay(starts);
+        } catch (ObjectNotFoundException e) {
+            e.printStackTrace();
+        }
+        return  null;
+    }
+
 
 }
 

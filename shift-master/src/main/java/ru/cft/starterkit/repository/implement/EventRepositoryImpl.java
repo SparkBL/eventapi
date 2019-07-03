@@ -52,6 +52,19 @@ public class EventRepositoryImpl implements EventRepository {
     private final Map<Long, Event> storage = new ConcurrentHashMap<>();
 
     @Override
+    public Collection<Event> getDay(String starts)   {
+        ArrayList<Event> Sorted = new ArrayList<>();
+        for (Event event : storage.values()) {
+            if(event.checkDay(starts)&&event!=null)//{soonStorage.put(event.getId(),event);}
+            {Sorted.add(event);}
+        }
+        Collections.sort(Sorted);
+
+        return Sorted;
+    }
+
+
+    @Override
     public Collection<Event>  getComingsoon() throws ParseException {
         ArrayList<Event> Sorted = new ArrayList<>();
         for (Event event : storage.values()) {

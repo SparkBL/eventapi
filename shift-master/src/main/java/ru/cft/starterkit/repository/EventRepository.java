@@ -8,7 +8,9 @@ import java.util.Collection;
 
 public interface EventRepository {
 
-     Collection<Event> getComingsoon() throws ParseException;
+     Collection<Event> getDay(String starts)  throws ObjectNotFoundException;
+
+    Collection<Event> getComingsoon() throws ParseException;
 
     Event add(Event entity);
 

@@ -18,4 +18,6 @@ public interface EventService {
     Event cancel(Long id);
 
     Collection<Event> getComingsoon();
+
+    Collection<Event> getDay(String starts) throws  ObjectNotFoundException;
 }
