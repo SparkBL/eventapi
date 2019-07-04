@@ -9,7 +9,7 @@ import ru.cft.starterkit.exception.ObjectNotFoundException;
 import ru.cft.starterkit.service.EventService;
 
 import java.util.Collection;
-
+@CrossOrigin
 @RestController
 public class EventController {
 
