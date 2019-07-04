@@ -2,14 +2,10 @@ package ru.cft.starterkit.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.joda.time.DateTime;
-
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-
-
 import java.text.ParseException;
-
-
+import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -136,6 +132,16 @@ public class Event implements Comparable<Event> {
                ", baz=" + baz +
                '}';
     }
+
+    public boolean checkCrossing(Event e)
+    {
+        if (this.getTimeStarts().isAfter(e.getTimeStarts())&&this.getTimeStarts().isBefore(e.getTimeEnds())) {return true;}
+        if (this.getTimeEnds().isAfter(e.getTimeStarts())&&this.getTimeEnds().isBefore(e.getTimeEnds())) {return true;}
+        if (this.getTimeStarts().isBefore(e.getTimeStarts())&&this.getTimeEnds().isAfter(e.getTimeEnds())) {return true;}
+return  false;
+
+    }
+
 
 
     @Override

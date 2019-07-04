@@ -1,12 +1,14 @@
 package ru.cft.starterkit.repository.implement;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jdk.nashorn.internal.runtime.regexp.joni.exception.ErrorMessages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import ru.cft.starterkit.entity.Event;
+import ru.cft.starterkit.exception.CrossongEventException;
 import ru.cft.starterkit.exception.ObjectNotFoundException;
 import ru.cft.starterkit.repository.EventRepository;
 
@@ -22,7 +24,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Repository
 public class EventRepositoryImpl implements EventRepository {
 
-    private static final File STORAGE_FILE = new File("C:\\Users\\Alexey\\eventapi\\shift-master\\data.json");
+    private static final File STORAGE_FILE = new File("C:\\Users\\AL\\eventapi\\shift-master\\data.json");
 
     private static final Logger log = LoggerFactory.getLogger(EventRepositoryImpl.class);
 
@@ -40,7 +42,7 @@ public class EventRepositoryImpl implements EventRepository {
    public final Collection<Event> getAll() {
         ArrayList<Event> Sorted = new ArrayList<>();
         for (Event event : storage.values()) {
-            if(event!=null)
+            if(event!=null&&event.getCanceled()==false)
             {Sorted.add(event);}
         }
         Collections.sort(Sorted);
@@ -81,15 +83,24 @@ public class EventRepositoryImpl implements EventRepository {
             {Sorted.add(event);}
             }
         Collections.sort(Sorted);
-
         return Sorted;
             }
 
-
-
-
+                 
+                 
+                 
     @Override
     public Event add(Event event) {
+                    for (Event e : storage.values()) {
+                        if (e.checkCrossing(event)==true&&  event != null)
+                        {
+                            try {
+                                throw new CrossongEventException();
+                            } catch (CrossongEventException ex) {
+                                ex.printStackTrace();
+                            }
+                        }
+                    }
         event.setId(idCounter.incrementAndGet());
         storage.put(event.getId(), event);
 
@@ -105,7 +116,6 @@ public class EventRepositoryImpl implements EventRepository {
             log.error("Failed to get event with id '{}' from storage", id);
             throw new ObjectNotFoundException(String.format("Event with id %s not found", id));
         }
-
         log.info("Returned event with id '{}' from storage: {}", id, event);
         return event;
     }
