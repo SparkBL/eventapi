@@ -37,7 +37,16 @@ public class EventRepositoryImpl implements EventRepository {
 
 
     @Override
-   public final Collection<Event> getAll() {return storage.values();}
+   public final Collection<Event> getAll() {
+        ArrayList<Event> Sorted = new ArrayList<>();
+        for (Event event : storage.values()) {
+            if(event!=null)
+            {Sorted.add(event);}
+        }
+        Collections.sort(Sorted);
+
+        return Sorted;}
+      //  return storage.values();}
 
     @Override
     public Event cancel(Long id) {
