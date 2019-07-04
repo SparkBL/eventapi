@@ -41,7 +41,7 @@ public class EventRepositoryImpl implements EventRepository {
    public final Collection<Event> getAll() {
         ArrayList<Event> Sorted = new ArrayList<>();
         for (Event event : storage.values()) {
-            if(event!=null&&event.getCanceled()==false)
+            if(event!=null&&!event.getCanceled())
             {Sorted.add(event);}
         }
         Collections.sort(Sorted);
@@ -65,7 +65,7 @@ public class EventRepositoryImpl implements EventRepository {
     public Collection<Event> getDay(String starts)   {
         ArrayList<Event> Sorted = new ArrayList<>();
         for (Event event : storage.values()) {
-            if(event.checkDay(starts)&&event!=null)//{soonStorage.put(event.getId(),event);}
+            if(event!=null&&event.checkDay(starts))//{soonStorage.put(event.getId(),event);}
             {Sorted.add(event);}
         }
         Collections.sort(Sorted);
@@ -78,7 +78,7 @@ public class EventRepositoryImpl implements EventRepository {
     public Collection<Event>  getComingsoon() throws ParseException {
         ArrayList<Event> Sorted = new ArrayList<>();
         for (Event event : storage.values()) {
-            if(event.checkIfSoon()&&event!=null)//{soonStorage.put(event.getId(),event);}
+            if(event!=null&&event.checkIfSoon())//{soonStorage.put(event.getId(),event);}
             {Sorted.add(event);}
             }
         Collections.sort(Sorted);
