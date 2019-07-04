@@ -3,6 +3,7 @@ package ru.cft.starterkit.service.implement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.cft.starterkit.entity.Event;
+import ru.cft.starterkit.exception.CrossongEventException;
 import ru.cft.starterkit.exception.ObjectNotFoundException;
 import ru.cft.starterkit.repository.EventRepository;
 import ru.cft.starterkit.service.EventService;
@@ -22,7 +23,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event add(String type,String email, String name, String lastname, String phone, String starts, String ends) {
+    public Event add(String type,String email, String name, String lastname, String phone, String starts, String ends) throws CrossongEventException {
         return eventRepository.add(new Event(type, email, name, lastname, phone, starts, ends, UUID.randomUUID()));
     }
 
@@ -39,7 +40,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event add(Event event) {
+    public Event add(Event event) throws CrossongEventException {
         event.setBaz(UUID.randomUUID());
     return eventRepository.add(event);
     }

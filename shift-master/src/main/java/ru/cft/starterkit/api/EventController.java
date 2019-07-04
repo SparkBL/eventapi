@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import ru.cft.starterkit.entity.Event;
+import ru.cft.starterkit.exception.CrossongEventException;
 import ru.cft.starterkit.exception.ObjectNotFoundException;
 import ru.cft.starterkit.service.EventService;
 
@@ -26,7 +27,7 @@ public class EventController {
             produces = "application/json"
     )
    public Event add(@RequestBody Event event
-    ) {
+    ) throws CrossongEventException {
         return eventService.add(event);
     }
 

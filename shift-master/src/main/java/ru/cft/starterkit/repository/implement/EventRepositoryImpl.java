@@ -1,7 +1,6 @@
 package ru.cft.starterkit.repository.implement;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jdk.nashorn.internal.runtime.regexp.joni.exception.ErrorMessages;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,15 +89,12 @@ public class EventRepositoryImpl implements EventRepository {
                  
                  
     @Override
-    public Event add(Event event) {
+    public Event add(Event event) throws CrossongEventException {
                     for (Event e : storage.values()) {
-                        if (e.checkCrossing(event)==true&&  event != null)
+                        if ( event != null&&event.checkCrossing(e))
                         {
-                            try {
-                                throw new CrossongEventException();
-                            } catch (CrossongEventException ex) {
-                                ex.printStackTrace();
-                            }
+                           log.error("Found crossing with other event with id {}", e.getId());
+                           throw new CrossongEventException(String.format("Found crossing with %s", e));
                         }
                     }
         event.setId(idCounter.incrementAndGet());

@@ -1,6 +1,7 @@
 package ru.cft.starterkit.repository;
 
 import ru.cft.starterkit.entity.Event;
+import ru.cft.starterkit.exception.CrossongEventException;
 import ru.cft.starterkit.exception.ObjectNotFoundException;
 
 import java.text.ParseException;
@@ -12,7 +13,7 @@ public interface EventRepository {
 
     Collection<Event> getComingsoon() throws ParseException;
 
-    Event add(Event entity);
+    Event add(Event entity) throws CrossongEventException;
 
     Event get(Long id) throws ObjectNotFoundException;
 
