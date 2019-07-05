@@ -7,4 +7,4 @@
 {"id":7,"type":"Выставка","email":"test6@mail.com","name":"Петр","lastname":"Петров","phone":"89132125380","starts":"16-07-2019 16","ends":"16-07-2019 20","canceled":false},
 {"id":8,"type":"Курсы от шефа","email":"34frae@mail.com","name":"ООО ПОВАР","lastname":"","phone":"89303239919","starts":"19-07-2019 16","ends":"19-07-2019 19","canceled":false},
 {"id":9,"type":"Мастеркласс","email":"hoshizone@gmail.com","name":"Павел","lastname":"Петров","phone":"46556456564","starts":"26-07-2019 13","ends":"26-07-2019 16","canceled":false},
-{"id":10,"type":"День рождения","email":"hosh3zone@gmail.com","name":"Анна","lastname":"Регозова","phone":"46556123564","starts":"14-07-2019 13","ends":"26-07-2019 17","canceled":false},]
+{"id":10,"type":"День рождения","email":"hosh3zone@gmail.com","name":"Анна","lastname":"Регозова","phone":"46556123564","starts":"14-07-2019 13","ends":"26-07-2019 17","canceled":false}]

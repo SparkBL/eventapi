@@ -1,0 +1,8 @@
+PATCH http://localhost:8080/events/removal/1
+Content-Type: application/json
+Accept: */*
+
+
+<> 2019-07-02T081731.200.json
+
+###
