@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Repository
 public class EventRepositoryImpl implements EventRepository {
 
-    private static final File STORAGE_FILE = new File("C:\\Users\\AL\\eventapi\\shift-master\\data.json");
+    private static final File STORAGE_FILE = new File("C:\\data.json");
 
     private static final Logger log = LoggerFactory.getLogger(EventRepositoryImpl.class);
 
