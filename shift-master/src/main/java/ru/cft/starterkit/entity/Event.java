@@ -134,6 +134,7 @@ public class Event implements Comparable<Event> {
 
     public boolean checkCrossing(Event e)
     {
+        if(this.getCanceled()) return false;
         if (this.getTimeStarts().isAfter(e.getTimeStarts())&&this.getTimeStarts().isBefore(e.getTimeEnds())) {return true;}
         if (this.getTimeEnds().isAfter(e.getTimeStarts())&&this.getTimeEnds().isBefore(e.getTimeEnds())) {return true;}
         if (this.getTimeStarts().isBefore(e.getTimeStarts())&&this.getTimeEnds().isAfter(e.getTimeEnds())) {return true;}
