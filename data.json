@@ -1,0 +1,10 @@
+[{"id":1,"type":"Утренник","email":"test@mail.com","name":"Сергей","lastname":"Сергеев","phone":"89132356780","starts":"06-07-2019 12","ends":"06-07-2019 15","canceled":false},
+{"id":2,"type":"Вечеринка","email":"test1@mail.com","name":"Иван","lastname":"Иванов","phone":"89132356732","starts":"06-07-2019 17","ends":"06-07-2019 21","canceled":false},
+{"id":3,"type":"Свадьба","email":"test2@mail.com","name":"Алексей","lastname":"Алексеев","phone":"89132446780","starts":"07-07-2019 14","ends":"07-07-2019 18","canceled":false},
+{"id":4,"type":"Фуршет","email":"test3@mail.com","name":"Людмила","lastname":"Дюмилова","phone":"89032356750","starts":"12-07-2019 13","ends":"12-07-2019 17","canceled":false},
+{"id":5,"type":"Концерт","email":"test4@mail.com","name":"Антон","lastname":"Антонов","phone":"89522356780","starts":"14-07-2019 18","ends":"14-07-2019 20","canceled":false},
+{"id":6,"type":"Фуршет","email":"test5@mail.com","name":"Георгий","lastname":"Георгиев","phone":"89132321380","starts":"13-07-2019 16","ends":"13-07-2019 20","canceled":false},
+{"id":7,"type":"Выставка","email":"test6@mail.com","name":"Петр","lastname":"Петров","phone":"89132125380","starts":"16-07-2019 16","ends":"16-07-2019 20","canceled":false},
+{"id":8,"type":"Курсы от шефа","email":"34frae@mail.com","name":"ООО ПОВАР","lastname":"","phone":"89303239919","starts":"19-07-2019 16","ends":"19-07-2019 19","canceled":false},
+{"id":9,"type":"Мастеркласс","email":"hoshizone@gmail.com","name":"Павел","lastname":"Петров","phone":"46556456564","starts":"26-07-2019 13","ends":"26-07-2019 16","canceled":false},
+{"id":10,"type":"День рождения","email":"hosh3zone@gmail.com","name":"Анна","lastname":"Регозова","phone":"46556123564","starts":"14-07-2019 13","ends":"26-07-2019 17","canceled":false}]
