@@ -138,6 +138,10 @@ public class Event implements Comparable<Event> {
         }
         return false;
     }
+  public boolean checkPast(){
+      DateTime now = DateTime.now();
+      if(this.getTimeStarts().isBefore(now))return true;
+    return false;}
 
     public boolean checkCrossing(Event e)
     {

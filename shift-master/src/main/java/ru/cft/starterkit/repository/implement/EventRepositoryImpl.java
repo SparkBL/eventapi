@@ -101,6 +101,11 @@ public class EventRepositoryImpl implements EventRepository {
                             log.error("Start date stands after End date");
                             throw new CrossongEventException(String.format("Start date stands after End date"));
                         }
+                        if ( event != null&&event.checkPast())
+                        {
+                            log.error("Event starts before now");
+                            throw new CrossongEventException(String.format("Event starts before now"));
+                        }
                     }
         event.setId(idCounter.incrementAndGet());
         storage.put(event.getId(), event);
