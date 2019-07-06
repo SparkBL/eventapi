@@ -1,4 +1,4 @@
-GET http://localhost:8080/events/date/25-7-2019
+GET http://localhost:8080/events/all
 Content-Type: application/json
 Accept: */*
 

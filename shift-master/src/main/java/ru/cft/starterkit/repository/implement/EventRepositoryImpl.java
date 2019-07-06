@@ -96,6 +96,11 @@ public class EventRepositoryImpl implements EventRepository {
                            log.error("Found crossing with other event with id {}", e.getId());
                            throw new CrossongEventException(String.format("Found crossing with %s", e));
                         }
+                        if ( event != null&&event.checkstarttoend())
+                        {
+                            log.error("Start date stands after End date");
+                            throw new CrossongEventException(String.format("Start date stands after End date");
+                        }
                     }
         event.setId(idCounter.incrementAndGet());
         storage.put(event.getId(), event);
