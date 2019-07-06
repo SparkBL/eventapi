@@ -159,9 +159,5 @@ return  false;
         if (day.compareTo(event)==0) {return true;} else{ return false;}
 
     }
-    public  boolean checkCrossing(String starts,String ends)
-    {
-      return true;
-    }
 }
 
