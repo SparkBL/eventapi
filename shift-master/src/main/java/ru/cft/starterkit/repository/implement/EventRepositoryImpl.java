@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Repository
 public class EventRepositoryImpl implements EventRepository {
 
-    private static final File STORAGE_FILE = new File("C:\\data.json");
+    private static final File STORAGE_FILE = new File("C:\\Users\\AL\\eventapi\\data.json");
 
     private static final Logger log = LoggerFactory.getLogger(EventRepositoryImpl.class);
 
@@ -91,7 +91,7 @@ public class EventRepositoryImpl implements EventRepository {
     @Override
     public Event add(Event event) throws CrossongEventException {
                     for (Event e : storage.values()) {
-                        if ( event != null&&event.checkCrossing(e))
+                        if ( event != null&&event.checkCrossing(e)&&!event.checkstarttoend())
                         {
                            log.error("Found crossing with other event with id {}", e.getId());
                            throw new CrossongEventException(String.format("Found crossing with %s", e));
