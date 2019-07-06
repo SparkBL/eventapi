@@ -99,7 +99,7 @@ public class EventRepositoryImpl implements EventRepository {
                         if ( event != null&&event.checkstarttoend())
                         {
                             log.error("Start date stands after End date");
-                            throw new CrossongEventException(String.format("Start date stands after End date");
+                            throw new CrossongEventException(String.format("Start date stands after End date"));
                         }
                     }
         event.setId(idCounter.incrementAndGet());
